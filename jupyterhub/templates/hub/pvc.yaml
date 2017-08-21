@@ -14,7 +14,7 @@ spec:
   selector:
 {{ toYaml .Values.hub.db.pvc.selector | indent 4 }}
   {{- end }}
-  {{ if ne .Values.hub.db.pvc.storageClassName nil -}}
+  {{ if typeIs "string" .Values.hub.db.pvc.storageClassName -}}
   storageClassName: {{ .Values.hub.db.pvc.storageClassName | quote }}
   {{- end }}
   accessModes:
